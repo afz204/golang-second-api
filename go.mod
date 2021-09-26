@@ -1,4 +1,4 @@
-module api1
+module github.com/afz204/golang-second-api
 
 go 1.17
 

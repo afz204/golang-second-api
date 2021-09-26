@@ -1,10 +1,10 @@
 package main
 
 import (
-	"api1/config"
-	"api1/controller"
-	"api1/repository"
-	"api1/service"
+	"github.com/afz204/golang-second-api/config"
+	"github.com/afz204/golang-second-api/controller"
+	"github.com/afz204/golang-second-api/repository"
+	"github.com/afz204/golang-second-api/service"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )

@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"api1/helper"
-	"api1/service"
+	"github.com/afz204/golang-second-api/helper"
+	"github.com/afz204/golang-second-api/service"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"log"

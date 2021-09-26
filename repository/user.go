@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"api1/entity"
+	"github.com/afz204/golang-second-api/entity"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

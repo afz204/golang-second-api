@@ -1,9 +1,9 @@
 package service
 
 import (
-	"api1/dto"
-	"api1/entity"
-	"api1/repository"
+	"github.com/afz204/golang-second-api/dto"
+	"github.com/afz204/golang-second-api/entity"
+	"github.com/afz204/golang-second-api/repository"
 	"github.com/mashingan/smapping"
 	"golang.org/x/crypto/bcrypt"
 )

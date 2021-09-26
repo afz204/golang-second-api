@@ -1,7 +1,7 @@
 package config
 
 import (
-	"api1/entity"
+	"github.com/afz204/golang-second-api/entity"
 	"fmt"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
