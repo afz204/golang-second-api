@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/afz204/golang-second-api/dto"
 	"github.com/afz204/golang-second-api/entity"
 	"github.com/afz204/golang-second-api/helper"
@@ -22,20 +23,20 @@ type AuthController interface {
 //put service
 type authController struct {
 	authService service.AuthService
-	jwtService service.JWTService
+	jwtService  service.JWTService
 }
 
 func NewAuthController(authService service.AuthService, jwtService service.JWTService) AuthController {
 	return &authController{
 		authService: authService,
-		jwtService: jwtService,
+		jwtService:  jwtService,
 	}
 }
 
 func (c *authController) Login(ctx *gin.Context) {
 	var loginDto dto.LoginDto
+	errDto := ctx.ShouldBind(&loginDto)
 	if isValidEmail(loginDto.Email) {
-		errDto := ctx.ShouldBind(&loginDto)
 		if errDto != nil {
 			responses := helper.BuildErrorResponse("Failed to process request", errDto.Error(), helper.EmptyObj{})
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, responses)
@@ -57,17 +58,20 @@ func (c *authController) Login(ctx *gin.Context) {
 	}
 }
 
-func isValidEmail (email string) bool {
+func isValidEmail(email string) bool {
 	var emailRegex = regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
 	if len(email) < 3 && len(email) > 254 {
+		fmt.Println("aa")
 		return false
 	}
 	if !emailRegex.MatchString(email) {
+		fmt.Println("bb")
 		return false
 	}
 	parts := strings.Split(email, "@")
 	mx, err := net.LookupMX(parts[1])
 	if err != nil || len(mx) == 0 {
+		fmt.Println("cc")
 		return false
 	}
 	return true
